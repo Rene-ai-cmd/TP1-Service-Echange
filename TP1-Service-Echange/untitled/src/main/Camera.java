@@ -3,13 +3,13 @@ package main;
 public class Camera extends Device {
     private int nbDetections;
 
-    public Camera(String room,int nbDetections) {
+    public Camera(String room) {
         super(room);
-        nbDetections = 0;
+        this.nbDetections = 0;
     }
 
     public  Camera () {
-        super("");
+        this(null);
     }
 
     public int getNbDetections() {

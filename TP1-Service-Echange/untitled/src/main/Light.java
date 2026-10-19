@@ -6,11 +6,11 @@ public class Light extends Device {
 
     public Light(String room, int intensity, int colorTemp ) {
         super(room);
+        this.intensity = intensity;
+        this.colorTemp = colorTemp;
     }
 
-    public Light() {
-        super("");
-    }
+    public Light() { this (null, 50, 3200); }
 
     public int getColorTemp() {
         return colorTemp;
@@ -25,9 +25,8 @@ public class Light extends Device {
     }
 
     public void setIntensity(int intensity) {
-        this.intensity = intensity;
-        if (!(intensity > 0) && intensity < 100) {
-           System.out.println("L'intensité doit être 0 et 100");
+        if ( intensity < 0 || intensity < 100) {
+            throw  new IllegalArgumentException("intensité invalide (0-100)");
         };
     }
 }
