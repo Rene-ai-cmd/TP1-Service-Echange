@@ -18,7 +18,7 @@ public class App {
         HttpServer server = HttpServer.create(new InetSocketAddress(8080),0);
 
         // Enregistrer les routes
-        server.createContext("/rooms", new ControleurRooms() {};
+        server.createContext("/rooms", new ControleurRooms() {});
         server.createContext("/devices", new ControleurDevices(devices) {});
 
         // Démarrer
