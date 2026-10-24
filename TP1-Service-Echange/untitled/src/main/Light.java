@@ -25,8 +25,9 @@ public class Light extends Device {
     }
 
     public void setIntensity(int intensity) {
-        if ( intensity < 0 || intensity < 100) {
+        if ( intensity < 0 || intensity > 100)
             throw  new IllegalArgumentException("intensité invalide (0-100)");
-        };
+        this.intensity = intensity;
+
     }
 }

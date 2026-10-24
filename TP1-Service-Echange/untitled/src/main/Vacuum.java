@@ -1,4 +1,4 @@
-package cal.info.java3;
+package main;
 
 import java.util.Random;
 

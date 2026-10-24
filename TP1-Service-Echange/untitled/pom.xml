@@ -18,11 +18,11 @@
     <dependencies>
         <!-- Jackson pour JSON -->
         <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
+        <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
         <dependency>
-            <groupId>tools.jackson.core</groupId>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>3.2.3</version>
-            <scope>compile</scope>
+            <version>2.17.2</version>
         </dependency>
     </dependencies>
 </project>

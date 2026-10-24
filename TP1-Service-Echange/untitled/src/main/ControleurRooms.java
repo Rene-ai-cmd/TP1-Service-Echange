@@ -1,8 +1,8 @@
 package main;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import tools.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,13 +18,17 @@ public class ControleurRooms implements HttpHandler {
         // GET /rooms
         // POST /rooms
         // DELETE /rooms
+        try {
         String methode = echange.getRequestMethod();
-
         switch (methode) {
             case "GET" -> listerPiece(echange);
             case "POST" -> ajouterPiece(echange);
             case "DELETE" -> supprimerPiece(echange);
             default -> repondre(echange , 405 , "Methode non autorise");
+        }
+    }catch (Exception e) {
+            e.printStackTrace();  // ← va afficher l'erreur dans la console
+            repondre(echange, 500, "Erreur: " + e.getMessage());
         }
     }
         // Sérialisation
@@ -68,7 +72,7 @@ public class ControleurRooms implements HttpHandler {
     // Envoyer une réponse texte ou JSON
     private void  repondre(HttpExchange echange, int code, String corps) throws IOException {
         byte[] octets = corps.getBytes(StandardCharsets.UTF_8);
-        echange.getRequestHeaders().set("Content-Type", "application/json; charset=UTF-8");
+        echange.getResponseHeaders().set("Content-Type", "application/json; charset=UTF-8");
         echange.sendResponseHeaders(code, octets.length);
         OutputStream os = echange.getResponseBody();
         os.write(octets);
